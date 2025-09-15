@@ -41,7 +41,7 @@ class UserListCreateView(generics.ListCreateAPIView):
         if self.request.method == 'POST':
             return UserWriteSerializer
         return UserReadSerializer
-
+    
     def perform_create(self, serializer):
         serializer.save(created_by=self.request.user if self.request.user.is_authenticated else None)
 
